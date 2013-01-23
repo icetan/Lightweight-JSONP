@@ -16,4 +16,4 @@ JSONP.init({
 */
 JSONP.get('/test?otherParam=1', {param1:'a', param2:'b'}, function(response){
 	console.log(response);
-}/* , "overrideCallbackName" */);
+}/* , function() { console.error('JSONP call failed.'); }, "overrideCallbackName" */);
