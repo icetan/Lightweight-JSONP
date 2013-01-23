@@ -45,7 +45,7 @@ var JSONP = (function(){
 	function encode(str) {
 		return encodeURIComponent(str);
 	}
-	function jsonp(url, params, callback, callbackName) {
+	function jsonp(url, params, callback, errorCallback, callbackName) {
 		var query = (url||'').indexOf('?') === -1 ? '?' : '&', key;
 				
 		callbackName = (callbackName||config['callbackName']||'callback');
@@ -66,7 +66,7 @@ var JSONP = (function(){
 			window[ uniqueName ] = null;
 		};
  
-		load(url + query + callbackName + '=' + uniqueName);
+		load(url + query + callbackName + '=' + uniqueName, errorCallback);
 		return uniqueName;
 	}
 	function setDefaults(obj){
